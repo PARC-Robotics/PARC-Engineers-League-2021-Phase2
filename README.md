@@ -48,6 +48,6 @@ i.e. downgrade the required version of `realsense2` to `2.36.0`
 Run the following command in one Terminal
 ```
 source ~/catkin_ws/devel/setup.bash
-roslaunch turtlebot3-parc turtlebot3_parc.launch
+roslaunch turtlebot3_parc turtlebot3_parc.launch
 ```
 

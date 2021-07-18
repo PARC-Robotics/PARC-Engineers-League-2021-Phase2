@@ -43,7 +43,7 @@ class TrafficControl():
         # set the model directory:
         model_dir_path = os.path.dirname(os.path.realpath(__file__))
         model_dir_path = model_dir_path.replace(
-            '/turtlebot3/turtlebot3_parc/scripts',
+            '/turtlebot3_parc/scripts',
             '/turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_autorace_2020')
 
         # load the traffic light models:

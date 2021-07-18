@@ -163,11 +163,11 @@
   </link>
 
   <!-- Include camera files -->
-  <xacro:include filename="$(find turtlebot3_parc)/urdf/camera/main_camera_support.urdf.xacro" />
+  <xacro:include filename="$(find turtlebot3_parc)/urdf/sensors.xacro" />
 
   <!-- Load main camera -->
-  <xacro:arg name="ns" default="turtlebot3" />
+  <!-- <xacro:arg name="ns" default="turtlebot3" />
   <xacro:load_main_camera ns="$(arg ns)" prefix="main_" main_camera_base="base_link"
-                        color_w="1280" color_h="720" depth_w="858" depth_h="480" update_rate="30" wide_flag="true"/>
+                        color_w="1280" color_h="720" depth_w="858" depth_h="480" update_rate="30" wide_flag="true"/> -->
 
 </robot>
