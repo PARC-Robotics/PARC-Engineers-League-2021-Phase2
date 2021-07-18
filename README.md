@@ -12,6 +12,7 @@ catkin_init_workspace
 ### Install TurtleBot3 packages via Debian packages
 
 ```
+sudo apt-get update
 sudo apt-get install ros-melodic-dynamixel-sdk
 sudo apt-get install ros-melodic-turtlebot3-msgs
 sudo apt-get install ros-melodic-turtlebot3
@@ -41,4 +42,12 @@ catkin_make
 To solve, update the file `realsense-ros/realsense_camera/CMakeLists.txt`,line: 43 to `find_package(realsense2 2.36.0)`
 i.e. downgrade the required version of `realsense2` to `2.36.0`
 
+
+## Run
+
+Run the following command in one Terminal
+```
+source ~/catkin_ws/devel/setup.bash
+roslaunch turtlebot3-parc turtlebot3_parc.launch
+```
 
