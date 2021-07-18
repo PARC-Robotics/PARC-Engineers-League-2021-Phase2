@@ -29,7 +29,6 @@
   <param name="green_red_duration" value="$(arg green_red_duration)" />
 
   <!-- Gazebo World file to load -->
-  <!-- <arg name="world_name" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_parc.world" /> -->
   <arg name="world_name" default="$(find turtlebot3_parc)/worlds/turtlebot3_parc.world" />
 
 
