@@ -4,3 +4,7 @@
 [submodule "realsense_gazebo_plugin"]
 	path = realsense_gazebo_plugin
 	url = https://github.com/pal-robotics/realsense_gazebo_plugin.git
+[submodule "turtlebot3_simulations"]
+	path = turtlebot3_simulations
+	url = https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+	branch = melodic-devel
