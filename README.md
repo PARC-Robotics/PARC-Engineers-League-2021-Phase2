@@ -45,9 +45,23 @@ i.e. downgrade the required version of `realsense2` to `2.36.0`
 
 ## Run
 
-Run the following command in one Terminal
+Run the following command in one terminal
 ```
 source ~/catkin_ws/devel/setup.bash
 roslaunch turtlebot3_parc turtlebot3_parc.launch
 ```
 
+And Run the following command in another terminal
+```
+source ~/catkin_ws/devel/setup.bash
+roslaunch turtlebot3_parc teleop.launch
+```
+
+Now keeping the second terminal on top (teleop.launch) press `i` to move the robot forward, you can see the robot moving in "RViz" and "Gazebo" windows.
+you can use the keys shown below to move the robot and `k` key to stop the movement.
+```
+Moving around:
+   u    i    o
+   j    k    l
+   m    ,    .
+```
