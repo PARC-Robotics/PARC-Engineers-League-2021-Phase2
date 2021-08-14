@@ -68,9 +68,10 @@
   <node name="spawn_goal_location" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
       args="-file $(find turtlebot3_parc)/models/goal_location/model.sdf -sdf 
             -model goal_location
-            -x     0.98
-            -y     1.64
-            -z     0.1" />
+            -x     1.38
+            -y     2.08
+            -z     0.14
+            -P     -1.54" />
 
 
   <!-- ========================= Visualize ========================= -->
