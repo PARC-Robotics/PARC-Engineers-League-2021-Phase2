@@ -18,9 +18,9 @@ class TrafficControl():
         self.traffic_state = 1
         
         # set durations
-        self.red_yellow_duration = rospy.get_param("red_yellow_duration")
-        self.yellow_green_duration = rospy.get_param("yellow_green_duration")
-        self.green_red_duration = rospy.get_param("green_red_duration")
+        self.red_green_duration = rospy.get_param("red_green_duration")
+        self.yellow_red_duration = rospy.get_param("yellow_red_duration")
+        self.green_yellow_duration = rospy.get_param("green_yellow_duration")
 
         self.rate = rospy.Rate(1)
 
@@ -82,27 +82,27 @@ class TrafficControl():
                 self.current_time = time.time()
 
 
-            elif self.traffic_state == 2: # YELLOW state
-                if abs(self.current_time - time.time()) > self.red_yellow_duration:
-                    rospy.wait_for_service('gazebo/spawn_sdf_model')
+            # elif self.traffic_state == 2: # YELLOW state
+            #     if abs(self.current_time - time.time()) > self.red_yellow_duration:
+            #         rospy.wait_for_service('gazebo/spawn_sdf_model')
 
-                    spawn_model_prox = rospy.ServiceProxy('gazebo/spawn_sdf_model', SpawnModel)
-                    spawn_model_prox(
-                        'traffic_light_yellow',
-                        self.yellow_light_model,
-                        "robot_ns",
-                        self.initial_pose,
-                        "world")
+            #         spawn_model_prox = rospy.ServiceProxy('gazebo/spawn_sdf_model', SpawnModel)
+            #         spawn_model_prox(
+            #             'traffic_light_yellow',
+            #             self.yellow_light_model,
+            #             "robot_ns",
+            #             self.initial_pose,
+            #             "world")
 
-                    del_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel)
-                    del_model_prox('traffic_light_red')
+            #         del_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel)
+            #         del_model_prox('traffic_light_red')
 
-                    self.traffic_state = 3
-                    self.current_time = time.time()
+            #         self.traffic_state = 3
+            #         self.current_time = time.time()
 
 
-            elif self.traffic_state == 3: # GREEN state
-                if abs(self.current_time - time.time()) > self.yellow_green_duration:
+            elif self.traffic_state == 2: # GREEN state
+                if abs(self.current_time - time.time()) > self.red_green_duration:
                     rospy.wait_for_service('gazebo/spawn_sdf_model')
 
                     spawn_model_prox = rospy.ServiceProxy('gazebo/spawn_sdf_model', SpawnModel)
@@ -114,14 +114,32 @@ class TrafficControl():
                         "world")
 
                     del_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel)
-                    del_model_prox('traffic_light_yellow')
+                    del_model_prox('traffic_light_red')
+
+                    self.traffic_state = 3
+                    self.current_time = time.time()
+
+            elif self.traffic_state == 3: # YELLOW state
+                if abs(self.current_time - time.time()) > self.green_yellow_duration:
+                    rospy.wait_for_service('gazebo/spawn_sdf_model')
+
+                    spawn_model_prox = rospy.ServiceProxy('gazebo/spawn_sdf_model', SpawnModel)
+                    spawn_model_prox(
+                        'traffic_light_yellow',
+                        self.yellow_light_model,
+                        "robot_ns",
+                        self.initial_pose,
+                        "world")
+
+                    del_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel)
+                    del_model_prox('traffic_light_green')
 
                     self.traffic_state = 4
                     self.current_time = time.time()
 
 
             elif self.traffic_state == 4: # RED state
-                if abs(self.current_time - time.time()) > self.green_red_duration:
+                if abs(self.current_time - time.time()) > self.yellow_red_duration:
                     rospy.wait_for_service('gazebo/spawn_sdf_model')
 
                     spawn_model_prox = rospy.ServiceProxy('gazebo/spawn_sdf_model', SpawnModel)
@@ -133,7 +151,7 @@ class TrafficControl():
                         "world")
 
                     del_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel)
-                    del_model_prox('traffic_light_green')
+                    del_model_prox('traffic_light_yellow')
 
                     self.traffic_state = 2
                     self.current_time = time.time()

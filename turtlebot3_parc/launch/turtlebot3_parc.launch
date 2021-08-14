@@ -21,12 +21,12 @@
   <arg name="multi_robot_name" default=""/>
 
   <!-- Traffic sign durations -->
-  <arg name="red_yellow_duration" default="6" />
-  <arg name="yellow_green_duration" default="1" />
-  <arg name="green_red_duration" default="7" />
-  <param name="red_yellow_duration" value="$(arg red_yellow_duration)" />
-  <param name="yellow_green_duration" value="$(arg yellow_green_duration)" />
-  <param name="green_red_duration" value="$(arg green_red_duration)" />
+  <arg name="red_green_duration" default="10" />
+  <arg name="yellow_red_duration" default="3" />
+  <arg name="green_yellow_duration" default="10" />
+  <param name="red_green_duration" value="$(arg red_green_duration)" />
+  <param name="yellow_red_duration" value="$(arg yellow_red_duration)" />
+  <param name="green_yellow_duration" value="$(arg green_yellow_duration)" />
 
   <!-- Gazebo World file to load -->
   <arg name="world_name" default="$(find turtlebot3_parc)/worlds/turtlebot3_parc.world" />
